@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.css'
 import SearchIcon from '@mui/icons-material/Search'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { Link, NavLink } from 'react-router-dom'
 import { useStateValue } from './StateProvider'
 import { auth } from './firebase'
@@ -19,12 +20,21 @@ const Header = () => {
       <Link to="/">
       <img className='header__logo' src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"/></Link>
         
+      <div className='header__option'>
+          <span className='header__optionLineOneFirst'>
+                Hello
+            </span>
+            <span className='header__optionLineTwoFirst'>
+                <AddLocationAltIcon  fontSize="small"/>
+                Select your Address                
+            </span>
+          </div>
 
         <div className='header__search'>
           <input className='header__searchInput' type="text"/>
           <SearchIcon className='header__searchIcon'/>
         </div>
-
+        <img className='header__logo_two' src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_India.png"/>
         <div className='header__nav'>
           <Link to={!user && '/login'}>
           <div onClick={handleAuthentication} className='header__option'>

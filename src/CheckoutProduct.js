@@ -1,5 +1,7 @@
 import React from 'react'
 import './CheckoutProduct.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useStateValue } from './StateProvider'
 
 function CheckoutProduct({id, image, title, price, rating }) {
@@ -10,6 +12,9 @@ function CheckoutProduct({id, image, title, price, rating }) {
         dispatch({
             type: 'REMOVE_FROM_BASKET',
             id: id,
+        })
+        toast("Item removed from Cart", {
+            position: toast.POSITION.BOTTOM_RIGHT
         })
     }
   return (
@@ -29,7 +34,10 @@ function CheckoutProduct({id, image, title, price, rating }) {
                         <p>⭐</p>
                     ))}
                 </div>
-                <button onClick={removeFromBasket}>Remove from Cart</button>
+                <button onClick={removeFromBasket}>
+                    Remove from Cart
+                    <ToastContainer/>
+                    </button>
             </div>
         </div>
     )

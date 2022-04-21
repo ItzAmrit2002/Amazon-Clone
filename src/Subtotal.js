@@ -1,13 +1,35 @@
 import React from 'react'
 import './Subtotal.css'
 import CurrencyFormat from 'react-currency-format'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import { useStateValue } from './StateProvider'
 import { getBasketTotal } from './reducer'
+import {useNavigate} from 'react-router-dom'
 
 
 function Subtotal() {
-
-    const [{basket}, dispatch] = useStateValue()
+    const onClick = e => {
+        e.preventDefault()
+        if(user == null)
+        {
+            toast("Please Login or Register to Checkout", {
+                position: toast.POSITION.BOTTOM_RIGHT
+            })
+        }
+        else if(basket.length >=1)
+        {
+            navigate('/payment')
+        }
+        else {
+            toast("Please add atleast 1 item to your cart", {
+                position: toast.POSITION.BOTTOM_RIGHT
+            })
+        }
+        // console.log(basket?.length())
+    }
+    const navigate = useNavigate();
+    const [{basket, user}, dispatch] = useStateValue()
   return (
     <div className='subtotal'>
 <CurrencyFormat
@@ -28,7 +50,8 @@ function Subtotal() {
     prefix={"₹"}
 />
 
-<button>Proceed to Checkout</button>
+<button onClick={onClick}>Proceed to Checkout</button>
+<ToastContainer />
     </div>
   )
 }

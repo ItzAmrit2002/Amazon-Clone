@@ -1,0 +1,43 @@
+.secondNavbar ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    height: 2.5rem;
+    color: white;
+    font-weight: 500;
+}
+
+.secondNavbar{
+    background-color: 	#232F3E;
+    border-bottom: 1px solid darkgray;
+}
+.secondNavbar ul li{
+    cursor: pointer;
+    padding: 5px;
+}
+
+.secondNavbar ul li:hover{
+    border: 1px solid white;
+    border-radius: 3px;
+}
+/* For 1024 Resolution */  
+@media only screen   
+and (min-device-width : 768px)   
+and (max-device-width : 1024px)  
+{ 
+    .secondNavbar ul li{
+        font-size: 8px;
+    }
+}
+
+/* For 1366 Resolution */  
+@media only screen   
+and (min-width: 1030px)   
+and (max-width: 1366px)  
+{ 
+    .secondNavbar ul li{
+        font-size: 12px;
+    }
+}
